@@ -1,18 +1,17 @@
-## test commit
-```{r}
-x <- 1 + 1
-```
-## second test of commit
-```{r}
-y <- 2 + 2
-```
 ## library
 ```{r}
 library(usethis)
 ```
-
-
 test Pull from GitHub
 
+New code chunk CTRL + ALT + i
+
+New comment in code CTRL + SHIFT + c
+
+Align code consistently CTRL+i
+
+Format ugly code to nice looking code CTRL + ALT + A
+
+Insert section label which is fold-able and navigable — this only works in a .R file not a .Rmd but is still useful CTRL + SHIFT + R
 
 
