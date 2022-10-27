@@ -1,5 +1,24 @@
+## packages()
+```{r}
+library(sf)
+library(here)
+library(raster)
+library(terra)
+library(fs)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(janitor)
+library(tmap)
+library(tmaptools)
+```
+## read in files
+```{r}
+alldata_90_21 <- read.csv("orignal_data\\HDR21-22_Composite_indices_complete_time_series.csv",header = TRUE, sep = ",",
+                          encoding = "latin1",na= "NULL")
 
-
+world_shape <- st_read("orignal_data\\World_Countries_(Generalized)\\World_Countries__Generalized_.shp")
+```
 
 
 
