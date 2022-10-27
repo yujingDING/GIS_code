@@ -2,7 +2,10 @@
 ```{r}
 x <- 1 + 1
 ```
-
+## second test of commit
+```{r}
+y <- 2 + 2
+```
 
 
 
