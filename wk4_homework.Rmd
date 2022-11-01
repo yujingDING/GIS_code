@@ -34,10 +34,16 @@ gender_inqidx_10_19 <- alldata_90_21 %>%
   clean_names() %>% 
   select(iso3,country,hdicode,region,gii_2010,gii_2019)
 ```
+## filter the unrequired data
+```{r}
+gender_inqidx_1019 <- gender_inqidx_10_19 %>% 
+  slice(1:195)
+
+```
 ## check data type
 ```{r}
-class(gender_inqidx_10_19)
-Datatypelist <- gender_inqidx_10_19 %>%  
+class(gender_inqidx_1019)
+Datatypelist <- gender_inqidx_1019 %>%  
   summarise_all(class) %>% 
   pivot_longer(everything(), 
                names_to="All_variables", 
@@ -48,16 +54,23 @@ Datatypelist
 ```
 ## creating a new column show the difference
 ```{r}
-gdr_inqidx_dif1019 <- gender_inqidx_10_19 %>%
+gdr_inqidx_dif1019 <- gender_inqidx_1019 %>%
   mutate(difference_1019 = gii_2019 - gii_2010)
+  
 ```
 ## convert countrycode to ensure the uniformity
 ?countrycode
 ```{r}
-world_shape_match <- world_shape %>% 
-  countrycode(world_shape$ISO, origin = 'iso2c', destination = 'iso3c')
+dif1019_match_shp <- gdr_inqidx_dif1019 %>% 
+  mutate(iso2 = countrycode(gdr_inqidx_dif1019$iso3, origin = 'iso3c', destination = 'iso2c'))
 ```
-
+## join the csv and shp
+```{r}
+dif1019_join <- world_shape %>% 
+  left_join(., 
+            dif1019_match_shp,
+            by = c("ISO" = "iso2"))
+```
 
 
 
