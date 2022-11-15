@@ -70,6 +70,8 @@ dif1019_join <- world_shape %>%
   left_join(., 
             dif1019_match_shp,
             by = c("ISO" = "iso2"))
+
+#edit 20221115
 ```
 
 
